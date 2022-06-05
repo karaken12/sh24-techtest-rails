@@ -1,35 +1,27 @@
-# README
+# SH:24 Full Stack Engineer Tech Test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an implementation of the SH:24 Tech Test written in Ruby using the Rails framework.
 
-Things you may want to cover:
+## Ruby environment
 
-* Ruby version
+This application requires Ruby 2.7.2 and Ruby bundler.
+A Ruby version manager such as [rvm](https://rvm.io) is recommended.
+If you have Ruby set up you can use `gem install bundler` to install bundler,
+followed by `bundle install` to install the necessary dependencies.
 
-* System dependencies
+### Running tests
 
-* Configuration
+Use `bundle exec rake test` to run unit tests, or `bundle exec rake test:system` to run end-to-end system tests.
 
-* Database creation
+### Running the app
 
-* Database initialization
+To start the app in development mode use `bundle exec rails server`;\
+open <http://127.0.0.1:3000> to view it in the browser.
 
-* How to run the test suite
+### Development setup
 
-* Services (job queues, cache servers, search engines, etc.)
+To set up Git hooks, use `bundle exec overcommit --install && bundle exec overcommit --sign` to install overcommit.
 
-* Deployment instructions
-
-* ...
-
-## Setup
-
-* `bundle install` to install dependencies
-* `bundle exec overcommit --install && bundle exec overcommit --sign` - set up Git hooks
-* `bundle exec rubocop` - manually check Ruby code (not normally necessary)
-
-## Steps to run tests
-
-* `bundle exec rake test` to run unit tests
-* `bundle exec rake test:system` to run system tests
+If you need to manually check the Ruby code
+(which is not normally necessary, as it happens on commit),
+then use `bundle exec rubocop`.
