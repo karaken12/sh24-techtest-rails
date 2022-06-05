@@ -1,5 +1,7 @@
 class PostcodeCheckService
   def shippable?(postcode)
+    return true if ['SH24 1AA', 'SH24 1AB'].include?(postcode)
+
     lsoa = get_lsoa(postcode)
     lsoa.start_with?('Southwark ') || lsoa.start_with?('Lambeth ')
   end

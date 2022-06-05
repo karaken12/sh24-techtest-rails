@@ -19,4 +19,10 @@ class PostcodeCheckServiceTest < ActiveSupport::TestCase
     postcode = 'YO10 5DD'
     assert_equal(false, service.shippable?(postcode))
   end
+
+  test 'should allow explicitly added postcodes' do
+    service = PostcodeCheckService.new
+    postcode = 'SH24 1AA'
+    assert_equal(true, service.shippable?(postcode))
+  end
 end
