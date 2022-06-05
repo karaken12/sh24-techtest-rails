@@ -7,7 +7,7 @@ class PostcodeControllerTest < ActionDispatch::IntegrationTest
     assert_match 'Postcode', @response.body
   end
 
-  test 'should show a basic form' do
+  test 'index should show a basic form' do
     get root_url
     assert_select 'form', { count: 1 } do |elements|
       form_element = elements[0]
@@ -19,5 +19,10 @@ class PostcodeControllerTest < ActionDispatch::IntegrationTest
         assert_equal('submit', inputs[1]['type'])
       end
     end
+  end
+
+  test 'search should show supplied postcode' do
+    get '/search?postcode=abc123'
+    assert_select 'p', { text: /abc123/ }
   end
 end
