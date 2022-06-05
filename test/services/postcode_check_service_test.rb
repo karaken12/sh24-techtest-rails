@@ -25,4 +25,14 @@ class PostcodeCheckServiceTest < ActiveSupport::TestCase
     postcode = 'SH24 1AA'
     assert_equal(true, service.shippable?(postcode))
   end
+
+  test 'should allow badly formatted postcodes' do
+    service = PostcodeCheckService.new
+    postcode = '   Se17qD   '
+    assert_equal(true, service.shippable?(postcode))
+    postcode = "sE1\t7Qa\n"
+    assert_equal(true, service.shippable?(postcode))
+    postcode = ' s H 2 4 1 A A '
+    assert_equal(true, service.shippable?(postcode))
+  end
 end

@@ -1,5 +1,7 @@
 class PostcodeCheckService
   def shippable?(postcode)
+    postcode = postcode.upcase.gsub(/[^A-Z\d]/, '')
+
     return true if ADDITIONAL_SHIPPABLE_POSTCODES.include?(postcode)
 
     lsoa = get_lsoa(postcode)
@@ -12,14 +14,14 @@ class PostcodeCheckService
 
   private
 
-  ADDITIONAL_SHIPPABLE_POSTCODES = ['SH24 1AA', 'SH24 1AB'].freeze
+  ADDITIONAL_SHIPPABLE_POSTCODES = %w[SH241AA SH241AB].freeze
   SHIPPABLE_AREAS = %w[Southwark Lambeth].freeze
 
   def get_lsoa(postcode)
     case postcode
-    when 'SE1 7QD'
+    when 'SE17QD'
       'Southwark ABCD'
-    when 'SE1 7QA'
+    when 'SE17QA'
       'Lambeth ABDFA'
     else
       'unknown'
