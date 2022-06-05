@@ -35,4 +35,12 @@ class PostcodeCheckServiceTest < ActiveSupport::TestCase
     postcode = ' s H 2 4 1 A A '
     assert_equal(true, service.shippable?(postcode))
   end
+
+  test 'should not allow invalid postcodes' do
+    service = PostcodeCheckService.new
+    postcode = ''
+    assert_equal(false, service.shippable?(postcode))
+    postcode = 'invalid'
+    assert_equal(false, service.shippable?(postcode))
+  end
 end

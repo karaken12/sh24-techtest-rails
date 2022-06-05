@@ -23,6 +23,10 @@ class PostcodeCheckService
 
   def get_lsoa(postcode)
     response = Faraday.get("http://postcodes.io/postcodes/#{postcode}")
-    JSON.parse(response.body)['result']['lsoa']
+    if response.status == 200
+      JSON.parse(response.body)['result']['lsoa']
+    else
+      ''
+    end
   end
 end
