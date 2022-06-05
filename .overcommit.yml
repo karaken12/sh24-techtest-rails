@@ -1,0 +1,9 @@
+PreCommit:
+  Mdl:
+    enabled: true
+
+  RuboCop:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: true

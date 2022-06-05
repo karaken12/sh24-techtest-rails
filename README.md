@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Setup
+
+* `bundle install`
+* `bundle exec overcommit --install && bundle exec overcommit --sign` - set up Git hooks
+* `bundle exec rubocop` - manually check Ruby code (not normally necessary)
