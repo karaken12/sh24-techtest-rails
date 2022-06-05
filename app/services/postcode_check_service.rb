@@ -7,8 +7,8 @@ class PostcodeCheckService
 
   private
 
-  ADDITIONAL_SHIPPABLE_POSTCODES = %w[SH241AA SH241AB].freeze
-  SHIPPABLE_AREAS = %w[Southwark Lambeth].freeze
+  ADDITIONAL_SHIPPABLE_POSTCODES = Rails.configuration.shipping['additional_shippable_postcodes']
+  SHIPPABLE_AREAS = Rails.configuration.shipping['shippable_areas']
 
   def in_additional_shippable_list?(postcode)
     ADDITIONAL_SHIPPABLE_POSTCODES.include?(postcode)

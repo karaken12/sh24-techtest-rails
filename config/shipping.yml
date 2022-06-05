@@ -1,0 +1,7 @@
+shared:
+  shippable_areas:
+    - Southwark
+    - Lambeth
+  additional_shippable_postcodes:
+    - SH241AA
+    - SH241AB
