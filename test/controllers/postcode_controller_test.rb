@@ -23,8 +23,13 @@ class PostcodeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'search should show supplied postcode' do
-    get '/search', params: { postcode: 'abc123' }
-    assert_select 'p', { text: /abc123/ }
+    mock = Minitest::Mock.new
+    mock.expect :shippable?, true, ['abc123']
+
+    PostcodeCheckService.stub :new, mock do
+      get '/search', params: { postcode: 'abc123' }
+      assert_select 'p', { text: /abc123/ }
+    end
   end
 
   test 'search should show a shippable postcode is shippable' do
