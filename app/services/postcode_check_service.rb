@@ -1,12 +1,19 @@
 class PostcodeCheckService
   def shippable?(postcode)
-    return true if ['SH24 1AA', 'SH24 1AB'].include?(postcode)
+    return true if ADDITIONAL_SHIPPABLE_POSTCODES.include?(postcode)
 
     lsoa = get_lsoa(postcode)
-    lsoa.start_with?('Southwark ') || lsoa.start_with?('Lambeth ')
+    return true if SHIPPABLE_AREAS.any? do |area|
+      lsoa.start_with?("#{area} ")
+    end
+
+    false
   end
 
   private
+
+  ADDITIONAL_SHIPPABLE_POSTCODES = ['SH24 1AA', 'SH24 1AB'].freeze
+  SHIPPABLE_AREAS = %w[Southwark Lambeth].freeze
 
   def get_lsoa(postcode)
     case postcode
