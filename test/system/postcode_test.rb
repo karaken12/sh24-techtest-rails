@@ -15,4 +15,13 @@ class PostcodeTest < ApplicationSystemTestCase
 
     assert_text 'abc123'
   end
+
+  test 'searching for a shippable postcode shows it is shippable' do
+    visit root_path
+
+    fill_in 'Postcode', with: 'SE1 7QD'
+    click_on 'Search'
+
+    assert_text 'SE1 7QD is shippable'
+  end
 end
