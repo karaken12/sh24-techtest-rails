@@ -22,13 +22,7 @@ class PostcodeCheckService
   end
 
   def get_lsoa(postcode)
-    case postcode
-    when 'SE17QD'
-      'Southwark ABCD'
-    when 'SE17QA'
-      'Lambeth ABDFA'
-    else
-      'unknown'
-    end
+    response = Faraday.get("http://postcodes.io/postcodes/#{postcode}")
+    JSON.parse(response.body)['result']['lsoa']
   end
 end
