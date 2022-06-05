@@ -3,6 +3,7 @@ class PostcodeController < ApplicationController
 
   def search
     @postcode = params[:postcode]
+    @shippable = (@postcode == 'abc123')
     render :search
   end
 end

@@ -11,6 +11,6 @@ class PostcodeFlowTest < ActionDispatch::IntegrationTest
     get '/search', params: { postcode: 'abc123' }
 
     assert_response :success
-    assert_select 'p', text: 'abc123'
+    assert_select 'p', text: /abc123/
   end
 end
